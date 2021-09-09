@@ -13,10 +13,6 @@
 # testing
 /coverage
 
-# production
-/build
-/latex/build
-
 # misc
 .DS_Store
 .env.local
