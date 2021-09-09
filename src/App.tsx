@@ -1,13 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import DescriptionIcon from "@material-ui/icons/Description";
 import GitHubIcon from "@material-ui/icons/GitHub";
 import LinkedInIcon from "@material-ui/icons/LinkedIn";
-import TooltipButton from "./components/TooltipButton";
-import headshot from "./static/images/headshot.jpg";
-import PDFOverlay from "./components/PDFOverlay";
+import Popper from "@material-ui/core/Popper";
+import IconButton, { IconButtonProps } from "@material-ui/core/IconButton";
+import Tooltip from "@material-ui/core/Tooltip";
+import { SvgIconProps } from "@material-ui/core/SvgIcon";
 import resume from "./static/pdfs/resume.pdf";
-import ButtonBar from "./components/ButtonBar";
+import headshot from "./static/images/headshot.jpg";
 
 const AppBody = styled.div`
   height: 100vh;
@@ -39,10 +40,47 @@ const ItalicH3 = styled.h3`
   font-style: italic;
 `;
 
-function App() {
-  const [open, setOpen] = useState(false);
-  const toggleOpen = () => setOpen((prevOpen) => !prevOpen);
+const ButtonBar = styled.div`
+  display: flex;
+  flex-direction: row;
 
+  > *:not(:last-child) {
+    margin-right: 8px;
+  }
+
+  .MuiIconButton-root {
+    color: #f8f8f2;
+  }
+`;
+
+const CustomPopper = styled(Popper)`
+  .MuiTooltip-tooltip {
+    font-family: inherit;
+    background-color: #44475a;
+  }
+  .MuiTooltip-arrow {
+    color: #44475a;
+  }
+`;
+
+function TooltipButton<C extends React.ElementType>({
+  title,
+  Icon,
+  ...iconButtonProps
+}: IconButtonProps<C, { component?: C }> & {
+  title: string;
+  Icon: React.ComponentType<SvgIconProps>;
+}) {
+  return (
+    <Tooltip PopperComponent={CustomPopper} title={title} arrow>
+      <IconButton {...iconButtonProps}>
+        <Icon />
+      </IconButton>
+    </Tooltip>
+  );
+}
+
+function App() {
   return (
     <AppBody>
       <InfoCard>
@@ -63,11 +101,11 @@ function App() {
           <TooltipButton
             title="Resume"
             Icon={DescriptionIcon}
-            onClick={toggleOpen}
+            href={resume}
+            target="blank"
           />
         </ButtonBar>
       </InfoCard>
-      <PDFOverlay pdf={resume} open={open} toggleOpen={toggleOpen} />
     </AppBody>
   );
 }
