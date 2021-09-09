@@ -55,12 +55,12 @@ const Headshot = styled.img`
   clip-path: circle(100px at center);
 `;
 
-const Title = styled.h1`
-  margin: 8px 0px;
+const Name = styled.h1`
+  margin: 16px 0px 8px;
 `;
 
-const ItalicH3 = styled.h3`
-  margin: 8px 0px;
+const Title = styled.h3`
+  margin: 8px 0px 16px;
   font-style: italic;
 `;
 
@@ -111,8 +111,8 @@ function App() {
       <AppBody>
         <InfoCard>
           <Headshot src={headshot} alt="headshot" />
-          <Title>Thomas Reay</Title>
-          <ItalicH3>Software Developer</ItalicH3>
+          <Name>Thomas M. Reay</Name>
+          <Title>Software Developer</Title>
           <ButtonBar>
             <TooltipButton
               title="Github"
