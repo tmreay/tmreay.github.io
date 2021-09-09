@@ -51,6 +51,6 @@ function GridClipPath({ id, space = 24, radius = 1 }: GridClipPathProps) {
       </defs>
     </svg>
   );
-};
+}
 
 export default GridClipPath;

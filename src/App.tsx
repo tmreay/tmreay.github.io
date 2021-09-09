@@ -5,13 +5,31 @@ import GitHubIcon from "@material-ui/icons/GitHub";
 import LinkedInIcon from "@material-ui/icons/LinkedIn";
 import Button from "./components/Button";
 import headshot from "./static/images/headshot.jpg";
-import GradientBody from "./components/GradientBody";
+import GridGradientBackground from "./components/GridGradientBackground";
+
+const AppBody = styled.div`
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  color: #f8f8f2;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 30px 30px 15px;
+
+  background-color: #282a36;
+  border-radius: 2px;
+`;
 
 const Headshot = styled.img`
   width: 200px;
   height: 200px;
   clip-path: circle(100px at center);
-  box-shadow: 0px 0px 3px 3px #282a36;
 `;
 
 const Name = styled.h1``;
@@ -29,13 +47,15 @@ const ButtonBar = styled.div`
   }
 
   .MuiIconButton-root {
-    color: white;
+    color: #f8f8f2;
   }
 `;
 
 function App() {
   return (
-      <GradientBody >
+    <>
+      <GridGradientBackground />
+      <AppBody>
         <Headshot src={headshot} alt="headshot" />
         <Name>Thomas Reay</Name>
         <Title>Software Developer</Title>
@@ -44,7 +64,8 @@ function App() {
           <Button title="LinkedIn" Icon={LinkedInIcon} />
           <Button title="Resume" Icon={DescriptionIcon} />
         </ButtonBar>
-      </GradientBody>
+      </AppBody>
+    </>
   );
 }
 

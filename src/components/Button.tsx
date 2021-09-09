@@ -8,6 +8,10 @@ import { SvgIconProps } from "@material-ui/core/SvgIcon";
 const CustomPopper = styled(Popper)`
   .MuiTooltip-tooltip {
     font-family: inherit;
+    background-color: #44475a;
+  }
+  .MuiTooltip-arrow {
+    color: #44475a;
   }
 `;
 

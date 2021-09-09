@@ -31,27 +31,12 @@ const GradientBackground = styled.div`
   clip-path: url(#${CLIP_PATH_ID});
 `;
 
-const Body = styled.div`
-  text-align: center;
-  color: white;
-  margin: auto;
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-`;
 
-type GradientBodyProps = {
-  children: React.ReactNode,
-}
-
-function GradientBody({ children }: GradientBodyProps) {
-  return <Body>
+function GridGradientBackground() {
+  return <>
     <GridClipPath id={CLIP_PATH_ID}/>
     <GradientBackground />
-    {children}
-  </Body>
+  </>
 }
 
-export default GradientBody
+export default GridGradientBackground
