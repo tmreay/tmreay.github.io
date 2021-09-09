@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import DescriptionIcon from "@material-ui/icons/Description";
 import GitHubIcon from "@material-ui/icons/GitHub";
@@ -6,6 +6,8 @@ import LinkedInIcon from "@material-ui/icons/LinkedIn";
 import Button from "./components/Button";
 import headshot from "./static/images/headshot.jpg";
 import GridGradientBackground from "./components/GridGradientBackground";
+import PDFOverlay from "./components/PDFOverlay";
+import resume from "./static/pdfs/resume.pdf";
 
 const AppBody = styled.div`
   text-align: center;
@@ -52,17 +54,29 @@ const ButtonBar = styled.div`
 `;
 
 function App() {
+  const [open, setOpen] = useState(false);
+  const toggleOpen = () => setOpen((prevOpen) => !prevOpen);
+
   return (
     <>
       <GridGradientBackground />
+      <PDFOverlay pdf={resume} open={open} toggleOpen={toggleOpen} />
       <AppBody>
         <Headshot src={headshot} alt="headshot" />
         <Name>Thomas Reay</Name>
         <Title>Software Developer</Title>
         <ButtonBar>
-          <Button title="Github" Icon={GitHubIcon} />
-          <Button title="LinkedIn" Icon={LinkedInIcon} />
-          <Button title="Resume" Icon={DescriptionIcon} />
+          <Button
+            title="Github"
+            Icon={GitHubIcon}
+            href="https://www.github.com"
+          />
+          <Button
+            title="LinkedIn"
+            Icon={LinkedInIcon}
+            href="https://www.linkedin.com"
+          />
+          <Button title="Resume" Icon={DescriptionIcon} onClick={toggleOpen} />
         </ButtonBar>
       </AppBody>
     </>
