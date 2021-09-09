@@ -26,8 +26,9 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build:js": "react-scripts build",
     "build:pdf": "pdflatex -include-directory=./latex/ -aux-directory=./latex/build/ -output-directory=./src/static/pdfs/ -jobname=resume main.tex",
+    "build": "yarn build:pdf && yarn build:js",
     "test": "react-scripts test",
     "lint": "eslint ."
   },
