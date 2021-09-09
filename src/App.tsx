@@ -40,7 +40,13 @@ const InfoCard = styled.div`
   justify-content: center;
   color: #f8f8f2;
 
-  border-radius: 2px;
+  padding: 24px;
+  border: double 1px transparent;
+  border-radius: 16px;
+  background-image: linear-gradient(#282a36e6, #282a36e6),
+                    linear-gradient(135deg, #ff79c680, #bd93f980);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
 `;
 
 const Headshot = styled.img`
@@ -49,7 +55,12 @@ const Headshot = styled.img`
   clip-path: circle(100px at center);
 `;
 
+const Title = styled.h1`
+  margin: 8px 0px;
+`;
+
 const ItalicH3 = styled.h3`
+  margin: 8px 0px;
   font-style: italic;
 `;
 
@@ -100,7 +111,7 @@ function App() {
       <AppBody>
         <InfoCard>
           <Headshot src={headshot} alt="headshot" />
-          <h1>Thomas Reay</h1>
+          <Title>Thomas Reay</Title>
           <ItalicH3>Software Developer</ItalicH3>
           <ButtonBar>
             <TooltipButton
