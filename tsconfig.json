@@ -18,7 +18,10 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "paths": {
+      "@material-ui/styled-engine": ["./node_modules/@material-ui/styled-engine-sc"]
+    }
   },
   "include": [
     "src/types"
