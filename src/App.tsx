@@ -3,11 +3,11 @@ import styled from "styled-components";
 import DescriptionIcon from "@material-ui/icons/Description";
 import GitHubIcon from "@material-ui/icons/GitHub";
 import LinkedInIcon from "@material-ui/icons/LinkedIn";
-import Button from "./components/Button";
+import TooltipButton from "./components/TooltipButton";
 import headshot from "./static/images/headshot.jpg";
-import GridGradientBackground from "./components/GridGradientBackground";
 import PDFOverlay from "./components/PDFOverlay";
 import resume from "./static/pdfs/resume.pdf";
+import ButtonBar from "./components/ButtonBar";
 
 const AppBody = styled.div`
   height: 100vh;
@@ -35,23 +35,8 @@ const Headshot = styled.img`
   clip-path: circle(100px at center);
 `;
 
-const Name = styled.h1``;
-
-const Title = styled.h3`
+const ItalicH3 = styled.h3`
   font-style: italic;
-`;
-
-const ButtonBar = styled.div`
-  display: flex;
-  flex-direction: row;
-
-  > *:not(:last-child) {
-    margin-right: 5px;
-  }
-
-  .MuiIconButton-root {
-    color: #f8f8f2;
-  }
 `;
 
 function App() {
@@ -60,23 +45,26 @@ function App() {
 
   return (
     <AppBody>
-      <GridGradientBackground />
       <InfoCard>
         <Headshot src={headshot} alt="headshot" />
-        <Name>Thomas Reay</Name>
-        <Title>Software Developer</Title>
+        <h1>Thomas Reay</h1>
+        <ItalicH3>Software Developer</ItalicH3>
         <ButtonBar>
-          <Button
+          <TooltipButton
             title="Github"
             Icon={GitHubIcon}
             href="https://www.github.com"
           />
-          <Button
+          <TooltipButton
             title="LinkedIn"
             Icon={LinkedInIcon}
             href="https://www.linkedin.com"
           />
-          <Button title="Resume" Icon={DescriptionIcon} onClick={toggleOpen} />
+          <TooltipButton
+            title="Resume"
+            Icon={DescriptionIcon}
+            onClick={toggleOpen}
+          />
         </ButtonBar>
       </InfoCard>
       <PDFOverlay pdf={resume} open={open} toggleOpen={toggleOpen} />
