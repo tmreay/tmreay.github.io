@@ -18,7 +18,7 @@ const CenteredModal = styled(Modal)`
 `;
 
 const ScrollDiv = styled.div`
-  overflow-y: scroll;
+  overflow-y: auto;
   height: 100vh;
 `;
 
