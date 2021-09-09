@@ -1,23 +1,13 @@
-import React, { memo, useMemo } from "react";
-import styled from "styled-components";
+import React, { useMemo } from "react";
 import { useWindowSize } from "../utils/hooks";
 
-const AbsoluteSvg = styled.svg`
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  /* bring your own prefixes */
-  transform: translate(-50%, -50%);
-  z-index: -1;
-`;
-
-type DotGridProps = {
+type GridClipPathProps = {
+  id: string;
   radius?: number;
   space?: number;
-  color?: string;
 };
 
-const DotGrid = ({ space = 16, radius = 1, color = "#FFFFFF40" }: DotGridProps) => {
+function GridClipPath({ id, space = 24, radius = 1 }: GridClipPathProps) {
   const [width, height] = useWindowSize();
 
   const centers = useMemo(() => {
@@ -46,24 +36,21 @@ const DotGrid = ({ space = 16, radius = 1, color = "#FFFFFF40" }: DotGridProps) 
   }, [width, height, space]);
 
   return (
-    <AbsoluteSvg
-      width={width}
-      height={height}
-      viewBox={`0 0 ${width} ${height}`}
-      version="1.1"
-    >
-      <g fill={color}>
-        {centers.map(([centerX, centerY]) => (
-          <circle
-            key={`${centerX}.${centerY}`}
-            cx={centerX}
-            cy={centerY}
-            r={radius}
-          />
-        ))}
-      </g>
-    </AbsoluteSvg>
+    <svg width="0" height="0" style={{ display: "inherit" }}>
+      <defs>
+        <clipPath id={id}>
+          {centers.map(([centerX, centerY]) => (
+            <circle
+              key={`${centerX}.${centerY}`}
+              cx={centerX}
+              cy={centerY}
+              r={radius}
+            />
+          ))}
+        </clipPath>
+      </defs>
+    </svg>
   );
 };
 
-export default memo(DotGrid);
+export default GridClipPath;
