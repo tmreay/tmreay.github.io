@@ -110,7 +110,7 @@ function App() {
       <AppBody>
         <InfoCard>
           <Headshot src={headshot} alt="headshot" />
-          <Name>Thomas M. Reay</Name>
+          <Name>Thomas Reay</Name>
           <Title>Software Developer</Title>
           <ButtonBar>
             <TooltipButton
