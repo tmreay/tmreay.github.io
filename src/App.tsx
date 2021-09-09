@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import Particles from "react-tsparticles";
-
 import DescriptionIcon from "@material-ui/icons/Description";
 import GitHubIcon from "@material-ui/icons/GitHub";
 import LinkedInIcon from "@material-ui/icons/LinkedIn";
@@ -10,9 +9,9 @@ import Popper from "@material-ui/core/Popper";
 import IconButton, { IconButtonProps } from "@material-ui/core/IconButton";
 import Tooltip from "@material-ui/core/Tooltip";
 import { SvgIconProps } from "@material-ui/core/SvgIcon";
+
 import resume from "./static/pdfs/resume.pdf";
 import headshot from "./static/images/headshot.jpg";
-
 import particlesOptions from "./particles-options.json";
 
 const ParticlesBackground = styled(Particles)`
