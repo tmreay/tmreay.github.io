@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Document, Page } from 'react-pdf';
-import Backdrop from '@material-ui/core/Backdrop';
+import Modal from '@material-ui/core/Modal';
 
 type PDFOverlayProps = {
   pdf: any;
@@ -9,12 +9,13 @@ type PDFOverlayProps = {
 }
 
 const PDFOverlay = function({ pdf, open, toggleOpen }: PDFOverlayProps) {
+  console.log(pdf)
   return (
-    <Backdrop open={open} onClick={toggleOpen}>
+    <Modal open={open} onClose={toggleOpen}>
       <Document file={pdf}>
         <Page pageNumber={1} />
       </Document>
-    </Backdrop>
+    </Modal>
   )
 }
 

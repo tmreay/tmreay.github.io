@@ -10,19 +10,20 @@ import PDFOverlay from "./components/PDFOverlay";
 import resume from "./static/pdfs/resume.pdf";
 
 const AppBody = styled.div`
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
+const InfoCard = styled.div`
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: auto;
   color: #f8f8f2;
-
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 30px 30px 15px;
 
   background-color: #282a36;
   border-radius: 2px;
@@ -58,10 +59,9 @@ function App() {
   const toggleOpen = () => setOpen((prevOpen) => !prevOpen);
 
   return (
-    <>
+    <AppBody>
       <GridGradientBackground />
-      <PDFOverlay pdf={resume} open={open} toggleOpen={toggleOpen} />
-      <AppBody>
+      <InfoCard>
         <Headshot src={headshot} alt="headshot" />
         <Name>Thomas Reay</Name>
         <Title>Software Developer</Title>
@@ -78,8 +78,9 @@ function App() {
           />
           <Button title="Resume" Icon={DescriptionIcon} onClick={toggleOpen} />
         </ButtonBar>
-      </AppBody>
-    </>
+      </InfoCard>
+      <PDFOverlay pdf={resume} open={open} toggleOpen={toggleOpen} />
+    </AppBody>
   );
 }
 
