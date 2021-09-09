@@ -12,6 +12,7 @@
     "@types/node": "^12.0.0",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
+    "@types/react-pdf": "^5.0.5",
     "@types/styled-components": "^5.1.11",
     "eslint-plugin-import": "^2.23.4",
     "lodash": "^4.17.21",
@@ -26,6 +27,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "build:pdf": "pdflatex -include-directory=./latex/ -aux-directory=./latex/build/ -output-directory=./src/static/pdfs/ -jobname=resume main.tex",
     "test": "react-scripts test",
     "lint": "eslint ."
   },

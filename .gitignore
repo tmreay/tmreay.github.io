@@ -10,6 +10,7 @@
 
 # production
 /build
+/latex/build
 
 # misc
 .DS_Store
