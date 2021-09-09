@@ -1,6 +1,8 @@
 import React from 'react';
-import { Document, Page } from 'react-pdf';
+import { Document, Page, pdfjs } from "react-pdf";
 import Modal from '@material-ui/core/Modal';
+
+pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
 type PDFOverlayProps = {
   pdf: any;
